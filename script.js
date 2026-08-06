@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkOutBtn = document.getElementById("checkout-btn");
 
   products.forEach((product) => {
-    
+    const productDiv = document.createElement('div')
+    productDiv.classList.add('product')
+    productDiv.innerHTML = `
+    <span>${product.name} - $${product.price.toFixed(2)}</span>
+    <button data-id="${product.id}">Add to cart</button>
+    `
   });
 });
