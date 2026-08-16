@@ -31,5 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addToCart(product)
     }
   })
-  function addToCart()
+  function addToCart() => {
+    
+  }
 });
