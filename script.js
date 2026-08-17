@@ -26,12 +26,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   productList.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
-      const productId = parseInt( e.target.getAttribute("data-id"));
+      const productId = parseInt(e.target.getAttribute("data-id"));
       const product = products.find(p => p.id === productId)
       addToCart(product)
     }
   })
-  function addToCart() => {
-    
+
+  function addToCart(product) {
+    cart.push(product);
+    renderCart()
   }
+
+  function renderCart() {
+    cartItems.innerText = ""
+    let totalPrice = 0
+
+    if (cart.length > 0) {
+      emptyCartMessage.classList.add('hidden')
+      cartTotalMessage.classList.remove('hidden')
+      cart.forEach((item, index) => {
+        totalPrice += item.price
+        const cartItem = document.createElement('div')
+        cartItem.innerHTML = `
+        ${item.name} - $${item.price.toFixed(2)}
+        `
+        cartItems.appendChild(cartItem)
+      })
+    } else {
+      emptyCartMessage.classList.remove('hidden')
+    }
+
+  }
+
 });
