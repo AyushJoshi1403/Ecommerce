@@ -51,11 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
         ${item.name} - $${item.price.toFixed(2)}
         `
         cartItems.appendChild(cartItem)
+        totalPriceDisplay.textContent = `$${totalPrice.toFixed(2)}`
       })
     } else {
       emptyCartMessage.classList.remove('hidden')
+      totalPriceDisplay.textContent = `$0.00`
     }
-
   }
 
+  checkOutBtn.addEventListener("click", () => {
+    cart.length = 0
+    alert("Checkout Successfully")
+    renderCart()
+  })
 });
